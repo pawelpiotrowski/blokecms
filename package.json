@@ -1,10 +1,10 @@
 {
-  "name": "bloke",
+  "name": "blokecms",
   "version": "0.0.1",
   "description": "Simple CMS built with nestjs and angular",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pawelpiotrowski/bloke.git"
+    "url": "git+https://github.com/pawelpiotrowski/blokecms.git"
   },
   "keywords": [
     "cms",
@@ -14,7 +14,7 @@
   "author": "Pawel Piotrowski (https://github.com/pawelpiotrowski)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pawelpiotrowski/bloke/issues"
+    "url": "https://github.com/pawelpiotrowski/blokecms/issues"
   },
-  "homepage": "https://github.com/pawelpiotrowski/bloke#readme"
+  "homepage": "https://github.com/pawelpiotrowski/blokecms#readme"
 }
