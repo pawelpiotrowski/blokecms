@@ -1,0 +1,22 @@
+# Env
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules
+
+# Compiled output
+dist
+tmp
+coverage
+
+# Client config copy
+config.client.copy.json
