@@ -1,0 +1,41 @@
+.media-form {
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+}
+
+.media-form__title.mat-mdc-card-title {
+  font-size: 16px;
+}
+
+.media-form__field {
+  width: 100%;
+}
+
+::ng-deep .mat-mdc-card-header-text {
+  flex: 1;
+}
+
+.media-form__content {
+  height: calc(100% - 101px);
+  position: relative;
+}
+
+.preview-block {
+  display: block;
+  height: calc(100% - var(--layout-gap) * 2);
+  position: absolute;
+  width: calc(100% - var(--layout-gap) * 2);
+  top: var(--layout-gap);
+  left: var(--layout-gap);
+}
+
+.preview {
+  z-index: 0;
+  box-sizing: border-box;
+  img {
+    max-height: calc(100% - var(--layout-gap) * 2);
+    max-width: calc(100% - var(--layout-gap) * 2);
+    position: absolute;
+  }
+}

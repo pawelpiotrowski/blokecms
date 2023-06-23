@@ -1,0 +1,112 @@
+<div mat-dialog-title>
+  <form
+    [formGroup]="searchForm"
+    (keydown.enter)="onSubmit($event)"
+    class="app-flex-layout__column app-flex-layout--align-space-around-stretch"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>
+        {{ inputLabel }}
+      </mat-label>
+      <input
+        type="text"
+        [placeholder]="inputPlaceholder"
+        matInput
+        formControlName="query"
+        cdkFocusInitial
+      />
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-content class="mat-typography">
+  <mat-progress-bar *ngIf="loading" color="primary" mode="query">
+  </mat-progress-bar>
+  <div
+    class="search-result"
+    class="app-flex-layout__row search-result__results"
+  >
+    <div class="search-result__output search-result__column">
+      <ng-container *ngIf="!loading && searchResult.length">
+        <div class="search-result__output__results">
+          <ng-container *ngFor="let result of searchResult">
+            <div
+              class="search-result__row app-flex-layout__row app-flex-layout--align-space-between-center"
+              [ngClass]="{ 'search-result__row--disabled': isSelected(result) }"
+              [attr.title]="isSelected(result) ? null : 'Add'"
+              (click)="select(result)"
+            >
+              <div>{{ resultItem(result) }}</div>
+              <button
+                mat-icon-button
+                color="primary"
+                [disabled]="isSelected(result)"
+              >
+                <mat-icon>{{ isSelected(result) ? 'check' : 'add' }}</mat-icon>
+              </button>
+            </div>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </div>
+        <button
+          class="app-toolbar-button-with-icon"
+          color="primary"
+          mat-flat-button
+          (click)="selectAll()"
+        >
+          <mat-icon>add</mat-icon>
+          Add all
+        </button>
+      </ng-container>
+      <ng-container
+        *ngIf="
+          !loading &&
+          searchResult.length === 0 &&
+          searchForm.value.query.length > 0
+        "
+      >
+        <p>Nothing found for {{ searchForm.value.query }}</p>
+      </ng-container>
+    </div>
+    <div
+      class="search-result__column-divider app-flex-layout__row app-flex-layout--align-center-center"
+    ></div>
+    <div class="search-result__selection search-result__column">
+      <ng-container *ngIf="selectedResult.length">
+        <div class="search-result__output__results">
+          <ng-container *ngFor="let selected of selectedResult">
+            <div
+              class="search-result__row app-flex-layout__row app-flex-layout--align-space-between-center"
+              title="Remove"
+              (click)="remove(selected)"
+            >
+              <div>{{ resultItem(selected) }}</div>
+              <button mat-icon-button color="primary">
+                <mat-icon>remove</mat-icon>
+              </button>
+            </div>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </div>
+        <button
+          class="app-toolbar-button-with-icon"
+          color="warn"
+          mat-flat-button
+          (click)="removeAll()"
+        >
+          <mat-icon>remove</mat-icon>
+          Clean selection
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="selectedResultAsContent"
+    [disabled]="selectedResult.length === 0"
+  >
+    Add selection
+  </button>
+</mat-dialog-actions>

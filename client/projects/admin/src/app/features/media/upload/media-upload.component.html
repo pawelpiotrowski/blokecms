@@ -1,0 +1,20 @@
+<div class="media-upload">
+  <div class="media-upload__file-area">
+    <div
+      class="media-upload__file-area__upload"
+      adminMediaUploadDragDrop
+      (click)="fileField.click()"
+      (fileDragOver)="draggingOver = true"
+      (fileDragLeave)="draggingOver = false"
+      (fileDropped)="handle($event)"
+    ></div>
+  </div>
+  <input
+    type="file"
+    name="image"
+    #fileField
+    (change)="handle($event)"
+    hidden
+    [accept]="accept"
+  />
+</div>

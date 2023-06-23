@@ -1,0 +1,12 @@
+:root {
+  // usage padding: var(--layout-gap)
+  --layout-gap: 16px;
+  --vertical-toolbar-width: 80px;
+  --page-with-toolbar-height: calc(100% - 64px);
+  --color-lead: rgba(0, 0, 0, 0.96);
+  --color-lead-accent: rgba(0, 0, 0, 0.1);
+  --color-lead-semi-transparent: rgba(0, 0, 0, 0.48);
+  --color-background: rgba(255, 255, 255, 0.96);
+  --color-background-semi-transparent: rgba(255, 255, 255, 0.48);
+  --color-middle: rgba(100, 100, 100, 0.2);
+}

@@ -1,0 +1,15 @@
+<div class="app-flex-fill app-flex-layout__column">
+  <mat-toolbar color="primary" class="main-layout__toolbar">
+    <span class="logo webding-font">{{ logoCharacter }}</span>
+    <h1 *ngIf="title" class="main-layout__title">
+      {{ title }}
+    </h1>
+    <span class="app-flex-spacer"></span>
+    <ng-container *ngIf="isLoggedIn">
+      <admin-account-nav></admin-account-nav>
+    </ng-container>
+  </mat-toolbar>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

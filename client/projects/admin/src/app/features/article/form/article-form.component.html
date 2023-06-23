@@ -1,0 +1,56 @@
+<mat-card appearance="outlined" *ngIf="article" class="article-form">
+  <form [formGroup]="articleForm" (keydown.enter)="articleFormSubmit($event)">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field appearance="outline" class="article-form__field">
+          <mat-label>Enter title</mat-label>
+          <input
+            type="text"
+            placeholder="Article title"
+            matInput
+            formControlName="title"
+            required
+          />
+          <mat-error *ngIf="articleFormCtrl['title']; errors"
+            >Title is required</mat-error
+          >
+        </mat-form-field>
+      </mat-card-title>
+    </mat-card-header>
+  </form>
+  <mat-card-content
+    *ngIf="isEdit; else newArticleBlocksTemplate"
+    class="article-form__card-content"
+  >
+    <admin-article-form-toolbar
+      [articleId]="article._id"
+      [pageId]="pageId"
+      [content]="articleContent"
+      (searchResult)="onSearchResult($event)"
+      [(expanded)]="expandContent"
+    >
+    </admin-article-form-toolbar>
+    <admin-article-form-content
+      *ngIf="article.content?.length; else emptyArticleContentTemplate"
+      [content]="articleContent"
+      [expanded]="expandContent"
+      [articleId]="article._id"
+      [pageId]="pageId"
+      (contentUpdate)="onContentUpdate($event)"
+      class="article-form__content"
+    >
+    </admin-article-form-content>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #newArticleBlocksTemplate>
+  <mat-card-content class="article-form__card-content">
+    You need to save new article to add blocks/multimedia.
+  </mat-card-content>
+</ng-template>
+
+<ng-template #emptyArticleContentTemplate>
+  <mat-card-content class="article-form__card-content">
+    No content
+  </mat-card-content>
+</ng-template>

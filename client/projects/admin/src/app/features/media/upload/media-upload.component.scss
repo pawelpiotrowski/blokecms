@@ -1,0 +1,27 @@
+@mixin media-upload-size() {
+  width: 100%;
+  height: 100%;
+}
+@mixin media-upload-area() {
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.media-upload {
+  position: relative;
+  @include media-upload-size();
+  &__file-area {
+    cursor: pointer;
+    @include media-upload-size();
+    @include media-upload-area();
+    &__upload {
+      position: absolute;
+      @include media-upload-size();
+    }
+  }
+}

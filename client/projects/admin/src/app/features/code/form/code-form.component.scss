@@ -1,0 +1,32 @@
+.code-form {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.code-form__title.mat-mdc-card-title {
+  font-size: 16px;
+}
+
+.code-form__field {
+  width: 100%;
+}
+
+.code-form__subtitle {
+  display: flex;
+  &__cell {
+    width: 50%;
+  }
+}
+
+.code-form__card-content {
+  height: 100%;
+  overflow: hidden;
+}
+
+// .code-form__code-editor {
+//   display: block;
+// }
+
+::ng-deep .mat-mdc-card-header-text {
+  flex: 1;
+}

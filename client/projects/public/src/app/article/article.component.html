@@ -1,0 +1,13 @@
+<ng-container *ngIf="article">
+  <article class="nestcms-article">
+    <h1 class="nestcms-article__title nestcms-title">
+      {{ article.title }}
+    </h1>
+    <ng-container *ngFor="let block of article.blocks">
+      <public-block
+        [block]="block"
+        class="nestcms-article__block"
+      ></public-block>
+    </ng-container>
+  </article>
+</ng-container>

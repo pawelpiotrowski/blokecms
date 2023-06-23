@@ -1,0 +1,12 @@
+<div
+  class="app-flex-fill app-flex-layout__column app-flex-layout--align-center-center login"
+>
+  <admin-login-form *ngIf="isUserResolved; else processing"></admin-login-form>
+</div>
+
+<ng-template #processing>
+  <h2>
+    <span class="webding-font">{{ resolvingUserWebDing }}</span>
+    {{ resolvingUserMessage }}
+  </h2>
+</ng-template>

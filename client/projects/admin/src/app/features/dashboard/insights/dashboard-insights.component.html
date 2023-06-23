@@ -1,0 +1,23 @@
+<div
+  class="app-flex-layout__row dashboard-insights"
+  data-testid="dashboard-insights"
+>
+  <p class="dashboard-insights__item">
+    Running version
+    <span class="version" data-testid="dashboard-insights-version">{{
+      (version$ | async)?.version
+    }}</span>
+  </p>
+  <ng-container *ngIf="insightsLinksResolved">
+    <ng-container *ngFor="let link of insightsLinks">
+      <mat-divider
+        [vertical]="true"
+        class="dashboard-insights__divider"
+      ></mat-divider>
+      <p class="dashboard-insights__item">
+        <span>{{ link.count }}</span
+        >&nbsp;<a [routerLink]="['/' + link.url]">{{ link.label }}</a>
+      </p>
+    </ng-container>
+  </ng-container>
+</div>

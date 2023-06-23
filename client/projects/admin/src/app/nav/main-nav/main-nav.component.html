@@ -1,0 +1,21 @@
+<ng-container *ngIf="items.length">
+  <ng-container
+    *ngFor="let item of items; let last = last; trackBy: trackItemsBy"
+  >
+    <ng-container *ngIf="last && isAdmin">
+      <span class="app-flex-spacer"></span>
+      <mat-divider class="main-nav__divider"></mat-divider>
+    </ng-container>
+    <a [routerLink]="['/' + item.route]" routerLinkActive="active">
+      <button
+        color="primary"
+        mat-icon-button
+        [matTooltip]="item.label"
+        matTooltipPosition="right"
+      >
+        <mat-icon>{{ item.icon }}</mat-icon>
+      </button>
+    </a>
+    <mat-divider *ngIf="!last" class="main-nav__divider"></mat-divider>
+  </ng-container>
+</ng-container>

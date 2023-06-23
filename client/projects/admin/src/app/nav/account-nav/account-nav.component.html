@@ -1,0 +1,29 @@
+<button
+  mat-button
+  [matMenuTriggerFor]="accountMenu"
+  matTooltip="Account"
+  matTooltipPosition="below"
+  aria-label="Account"
+  data-testid="account-nav-menu-open"
+>
+  <mat-icon>{{ isAdmin ? 'account_circle' : 'person' }}</mat-icon>
+  <span class="account-username" data-testid="account-nav-username">{{
+    userName
+  }}</span>
+</button>
+<mat-menu #accountMenu>
+  <button
+    mat-menu-item
+    [routerLink]="['/account']"
+    data-testid="account-nav-button-manage"
+  >
+    <span>Manage Account</span>
+  </button>
+  <button
+    mat-menu-item
+    (click)="logOut()"
+    data-testid="account-nav-button-logout"
+  >
+    <span>Logout</span>
+  </button>
+</mat-menu>

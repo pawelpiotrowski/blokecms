@@ -1,0 +1,14 @@
+<mat-card appearance="outlined" *ngIf="page" class="page-view">
+  <div class="page-view__slug">
+    <strong>slug: </strong><em>/{{ page.slug }}</em>
+  </div>
+  <mat-divider></mat-divider>
+  <section class="page-view__section">
+    <h1 class="page-view__title">
+      {{ page.title }}
+    </h1>
+    <ng-container *ngFor="let article of page.articles">
+      <admin-article-view [article]="article"></admin-article-view>
+    </ng-container>
+  </section>
+</mat-card>

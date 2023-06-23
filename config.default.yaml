@@ -1,0 +1,47 @@
+# Feel free to edit:
+# - api -> auth -> expiresIn
+# - api -> auth -> refreshExpiresIn
+# - api -> rateLimit (all properties)
+# - db -> url
+# - gql -> enableInMemorySchema
+
+http:
+  # If you edit port and running app in development
+  # you need to also update this value in:
+  # - config.client.json
+  # - proxy.config.json
+  # - playwright.config.ts
+  port: 3000
+api:
+  url: 'api'
+  auth:
+    url: 'auth'
+    expiresIn: '1h'
+    refreshExpiresIn: '3h'
+    endpoints:
+      login: 'login'
+      logout: 'logout'
+      whoami: 'whoami'
+      refresh: 'refresh'
+      role: 'role'
+      pwdChange: 'pwd-change'
+  rateLimit:
+    clientFiles:
+      ttl: 60
+      limit: 60
+    loginAttempts:
+      ttl: 60
+      limit: 20
+    disabled: false
+ui:
+  admin:
+    url: 'admin'
+  public:
+    url: ''
+  files:
+    url: 'files'
+db:
+  url: 'mongodb://127.0.0.1/devNestCms?retryWrites=true&writeConcern=majority'
+gql:
+  enableInMemorySchema: true
+  url: 'graphql'

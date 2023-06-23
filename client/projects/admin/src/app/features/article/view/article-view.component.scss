@@ -1,0 +1,11 @@
+.article-view {
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+}
+
+::ng-deep admin-block-view mat-card.mat-mdc-card,
+::ng-deep admin-media-view mat-card.mat-card {
+  box-shadow: none !important;
+  padding: 0;
+}

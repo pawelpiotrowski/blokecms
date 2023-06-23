@@ -1,0 +1,22 @@
+<admin-page-with-toolbar-layout>
+  <div page-with-toolbar-layout--page class="app-fill-view">
+    <admin-page-with-child-drawer-layout
+      [activateDrawer]="hasChildView"
+      [drawerPercentageWidth]="'100%'"
+      [pageCreateNewButtonLabel]="entityLabel"
+      [pageCreateNewButtonRoute]="entityRoute"
+      [loading]="loading"
+    >
+      <div page-with-child-drawer-layout--page>
+        <admin-page-content-list-layout
+          [rows]="data"
+          [columns]="columns"
+          (editActionEmitter)="editActionEventHandler($event)"
+          (viewActionEmitter)="viewActionEventHandler($event)"
+          (deleteActionEmitter)="deleteActionEventHandler($event)"
+          [actionConfirmUseRowProperty]="'_id'"
+        ></admin-page-content-list-layout>
+      </div>
+    </admin-page-with-child-drawer-layout>
+  </div>
+</admin-page-with-toolbar-layout>

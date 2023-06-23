@@ -1,0 +1,21 @@
+<admin-page-content-entity-layout
+  [parentRouteLabel]="backButtonLabel"
+  [parentRoute]="'settings/scripts'"
+  [entityLabel]="'Script'"
+  [entityId]="entityId"
+  [entityActionConfirmLabel]="'Script'"
+  [isNew]="isNew"
+  [isEdit]="isEdit"
+  [isView]="isView"
+>
+  <ng-container *ngIf="scriptData">
+    <admin-script-view
+      *ngIf="isView; else scriptFormTemplate"
+      [script]="scriptData"
+    ></admin-script-view>
+  </ng-container>
+</admin-page-content-entity-layout>
+
+<ng-template #scriptFormTemplate
+  ><admin-script-form [entity]="scriptData"></admin-script-form
+></ng-template>

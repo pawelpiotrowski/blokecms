@@ -1,0 +1,56 @@
+<mat-card appearance="outlined" class="link-form">
+  <form [formGroup]="linkForm" (keydown.enter)="linkFormSubmit($event)">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field
+          appearance="outline"
+          class="link-form__field link-form__field__title"
+        >
+          <mat-label>Enter label</mat-label>
+          <input
+            type="text"
+            placeholder="Link label"
+            matInput
+            formControlName="label"
+            required
+          />
+          <mat-error *ngIf="linkFormCtrl['label']; errors"
+            >Label is required</mat-error
+          >
+        </mat-form-field>
+      </mat-card-title>
+      <mat-form-field
+        *ngIf="isExternal"
+        appearance="fill"
+        class="link-form__field__slug"
+      >
+        <mat-label>Enter url</mat-label>
+        <input
+          type="text"
+          placeholder="Link url"
+          matInput
+          formControlName="url"
+          required
+        />
+        <mat-error *ngIf="linkFormCtrl['url']; errors"
+          >Url is required</mat-error
+        >
+      </mat-form-field>
+      <admin-page-form-autocomplete
+        class="link-form__field__slug"
+        *ngIf="!isExternal"
+        [preSelect]="asPage"
+        (selectedUpdate)="internalLinkPageUpdate($event)"
+      ></admin-page-form-autocomplete>
+      <button
+        mat-mini-fab
+        [disabled]="!canSubmitLinkForm"
+        (click)="save()"
+        color="primary"
+        class="link-form__add"
+      >
+        <mat-icon>{{ isEdit ? 'save' : 'add' }}</mat-icon>
+      </button>
+    </mat-card-header>
+  </form>
+</mat-card>

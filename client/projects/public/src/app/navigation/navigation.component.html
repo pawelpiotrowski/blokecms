@@ -1,0 +1,33 @@
+<ng-container *ngIf="nav$ | async as nav">
+  <nav class="nestcms-nav nestcms-nav--main">
+    <ng-container *ngFor="let link of nav.links">
+      <ng-container
+        [ngTemplateOutlet]="
+          link.url && link.url.length > 0
+            ? externalLinkTemplate
+            : internalLinkTemplate
+        "
+        [ngTemplateOutletContext]="{ link: link }"
+      >
+      </ng-container>
+    </ng-container>
+  </nav>
+</ng-container>
+
+<ng-template #externalLinkTemplate let-link="link">
+  <a
+    class="nestcms-nav__link nestcms-nav__link--external"
+    [attr.href]="link.url"
+    >{{ link.label }}</a
+  >
+</ng-template>
+
+<ng-template #internalLinkTemplate let-link="link">
+  <a
+    class="nestcms-nav__link nestcms-nav__link--internal"
+    [ngClass]="{ 'nestcms-nav__link--home': link.slug === 'home' }"
+    [routerLink]="[link.slug === 'home' ? '' : link.slug]"
+    routerLinkActive="nestcms-nav__link--active"
+    >{{ link.label }}</a
+  >
+</ng-template>

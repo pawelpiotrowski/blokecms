@@ -1,0 +1,22 @@
+<ng-container *ngIf="data; else loading" [ngSwitch]="content.kind">
+  <ng-content></ng-content>
+  <admin-block-view
+    *ngSwitchCase="'Text'"
+    [blockText]="dataText"
+  ></admin-block-view>
+  <admin-media-view
+    *ngSwitchCase="'Media'"
+    [blockMedia]="dataMedia"
+  ></admin-media-view>
+  <admin-code-view
+    *ngSwitchCase="'Code'"
+    [blockCode]="dataCode"
+  ></admin-code-view>
+</ng-container>
+
+<ng-template #loading>
+  <mat-spinner diameter="16" *ngIf="!error"></mat-spinner>
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+</ng-template>

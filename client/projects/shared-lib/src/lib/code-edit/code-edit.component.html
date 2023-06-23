@@ -1,0 +1,13 @@
+<div
+  class="code-edit__wrap"
+  [ngClass]="{ 'code-edit__wrap--no-line-numbers': !showLineNumbers }"
+>
+  <div class="code-edit__line-numbers-column">
+    <div class="code-edit__line-numbers">
+      <ng-container *ngFor="let number of lineNumbers">
+        {{ number + 1 }}<br />
+      </ng-container>
+    </div>
+  </div>
+  <pre #codeEl class="code-edit__pre" spellcheck="false"></pre>
+</div>

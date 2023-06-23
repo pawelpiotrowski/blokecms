@@ -1,0 +1,69 @@
+<admin-navigation-form-toolbar
+  (addNewLink)="addItem($event)"
+></admin-navigation-form-toolbar>
+<mat-accordion
+  class="navigation-form-content"
+  displayMode="flat"
+  hideToggle
+  cdkDropList
+  (cdkDropListDropped)="dropSortBlocks($event)"
+  *ngIf="content?.length"
+>
+  <mat-expansion-panel
+    *ngFor="let item of content; let i = index"
+    [disabled]="true"
+    #mep="matExpansionPanel"
+    class="navigation-form-content__item"
+    cdkDragLockAxis="y"
+    cdkDrag
+  >
+    <mat-expansion-panel-header class="navigation-form-content__item__header">
+      <mat-panel-title class="navigation-form-content__item__title">
+        <mat-icon>
+          {{ item.url ? 'link' : 'dataset_linked' }}
+        </mat-icon>
+        {{ item.label }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ item.url ? item.url : '/' + item.slug }}
+      </mat-panel-description>
+
+      <div
+        (click)="dragHandleClickHandler($event)"
+        class="navigation-form-content__item__toolbar app-flex-layout__row app-flex-layout--align-_-center"
+      >
+        <button
+          mat-icon-button
+          color="primary"
+          [title]="mep.expanded ? 'Cancel' : 'Edit'"
+          (click)="mep.expanded = !mep.expanded"
+        >
+          <mat-icon>{{ mep.expanded ? 'close' : 'edit' }}</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          title="Remove"
+          (click)="removeItem(item)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <div
+          cdkDragHandle
+          class="navigation-form-content__item__toolbar__drag-handle"
+        >
+          <button mat-icon-button title="Move">
+            <mat-icon>drag_indicator</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <admin-navigation-form-link
+        [link]="getAsLinkContent(item, i)"
+        [activated]="mep.expanded"
+        (linkUpdate)="updateItem($event)"
+      ></admin-navigation-form-link>
+    </ng-template>
+  </mat-expansion-panel>
+</mat-accordion>

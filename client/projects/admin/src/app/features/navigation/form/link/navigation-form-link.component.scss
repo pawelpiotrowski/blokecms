@@ -1,0 +1,22 @@
+.link-form .mat-mdc-card-title {
+  font-size: 16px;
+}
+
+.link-form {
+  &__field {
+    width: 100%;
+    &__slug {
+      width: 44%;
+    }
+  }
+  &__add {
+    display: flex;
+    align-self: center;
+    margin-top: -22px;
+    margin-left: 16px;
+  }
+}
+
+::ng-deep .mat-mdc-card-header-text {
+  flex: 1;
+}

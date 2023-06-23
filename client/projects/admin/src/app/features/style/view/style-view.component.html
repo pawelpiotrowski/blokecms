@@ -1,0 +1,15 @@
+<mat-card appearance="outlined" *ngIf="style" class="style-view">
+  <mat-card-header>
+    <mat-card-title class="style-view__title">
+      {{ style.name }}
+    </mat-card-title>
+    <mat-card-subtitle>CSS:</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="style-view__card-content">
+    <shared-code-edit
+      [code]="style.formatted"
+      [readonly]="true"
+      [showLineNumbers]="false"
+    ></shared-code-edit>
+  </mat-card-content>
+</mat-card>

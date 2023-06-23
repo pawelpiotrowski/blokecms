@@ -1,0 +1,24 @@
+.dashboard-insights {
+  align-items: center;
+
+  .version {
+    display: inline-block;
+    min-width: 32px;
+  }
+
+  &__item {
+    margin: 0;
+    a {
+      color: inherit;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__divider {
+    height: 1em;
+    margin: 0 12px;
+  }
+}

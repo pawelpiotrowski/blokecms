@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+
+.table-filter {
+  margin-top: var(--layout-gap);
+  width: calc(100% - 2px);
+}
+
+.table-wrapper {
+  height: calc(100% - 100px);
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+
+  .mat-column {
+    &--edit,
+    &--view,
+    &--delete {
+      text-align: center;
+      width: 56px;
+      .mat-icon {
+        opacity: 0.66;
+      }
+    }
+  }
+
+  .mat-cell--no-data {
+    padding: var(--layout-gap);
+  }
+
+  .mat-mdc-cell {
+    button {
+      transform: scale(0.7);
+    }
+  }
+}
+
+.mat-paginator--sticky {
+  bottom: 0px;
+  position: sticky;
+  // z-index: 10;
+}

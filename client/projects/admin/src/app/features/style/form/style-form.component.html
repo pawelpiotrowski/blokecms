@@ -1,0 +1,28 @@
+<mat-card appearance="outlined" *ngIf="entity" class="style-form">
+  <form [formGroup]="entityForm" (keydown.enter)="entityFormSubmit($event)">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field appearance="outline" class="style-form__field">
+          <mat-label>Enter name</mat-label>
+          <input
+            type="text"
+            placeholder="Style name"
+            matInput
+            formControlName="name"
+            required
+          />
+          <mat-error *ngIf="entityFormCtrl['name']; errors"
+            >Name is required</mat-error
+          >
+        </mat-form-field>
+      </mat-card-title>
+      <mat-card-subtitle>CSS:</mat-card-subtitle>
+    </mat-card-header>
+  </form>
+  <mat-card-content class="style-form__card-content">
+    <shared-code-edit
+      (codeUpdate)="codeUpdateHandler($event)"
+      [code]="entity.formatted"
+    ></shared-code-edit>
+  </mat-card-content>
+</mat-card>

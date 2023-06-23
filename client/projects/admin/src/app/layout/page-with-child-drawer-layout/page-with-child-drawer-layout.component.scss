@@ -1,0 +1,27 @@
+.page-with-toolbar-layout__toolbar,
+.mat-drawer-container {
+  background-color: transparent;
+}
+
+.spinner {
+  align-items: center;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  // using 101 because material table sticky headers using 100
+  z-index: 101;
+}
+
+::ng-deep [page-with-child-drawer-layout--page] {
+  height: var(--page-with-toolbar-height);
+}
+
+::ng-deep div.mat-drawer-inner-container {
+  overflow: hidden;
+}

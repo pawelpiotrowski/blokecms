@@ -1,0 +1,26 @@
+<form (keydown.enter)="autocompleteFormSubmit($event)">
+  <mat-form-field class="autocomplete__field" appearance="fill">
+    <mat-label>{{
+      isEdit ? '/' + preSelect?.slug : 'Enter page slug'
+    }}</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="inputFormControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      [displayWith]="displayFn"
+      autoActiveFirstOption
+      (optionSelected)="selectedOption($event)"
+    >
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option.title }} /{{ option.slug }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

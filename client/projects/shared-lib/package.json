@@ -1,0 +1,15 @@
+{
+  "name": "shared-lib",
+  "version": "0.7.0",
+  "peerDependencies": {
+    "@angular/common": "^14.0.5",
+    "@angular/core": "^14.0.5",
+    "prismjs": "^1.29.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.26.0"
+  }
+}

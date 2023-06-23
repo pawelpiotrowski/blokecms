@@ -1,0 +1,21 @@
+<admin-page-content-entity-layout
+  [parentRouteLabel]="backButtonLabel"
+  [parentRoute]="backButtonRoute"
+  [entityLabel]="'User'"
+  [entityId]="entityId"
+  [entityActionConfirmLabel]="username"
+  [isNew]="isNew"
+  [isEdit]="isEdit"
+  [isView]="isView"
+>
+  <ng-container *ngIf="userData">
+    <admin-user-view
+      *ngIf="isView; else userFormTemplate"
+      [user]="userData"
+    ></admin-user-view>
+  </ng-container>
+</admin-page-content-entity-layout>
+
+<ng-template #userFormTemplate>
+  <admin-user-form [user]="userData"></admin-user-form>
+</ng-template>

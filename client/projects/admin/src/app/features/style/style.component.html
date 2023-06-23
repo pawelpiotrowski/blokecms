@@ -1,0 +1,21 @@
+<admin-page-content-entity-layout
+  [parentRouteLabel]="backButtonLabel"
+  [parentRoute]="'settings/styles'"
+  [entityLabel]="'Style'"
+  [entityId]="entityId"
+  [entityActionConfirmLabel]="'Style'"
+  [isNew]="isNew"
+  [isEdit]="isEdit"
+  [isView]="isView"
+>
+  <ng-container *ngIf="styleData">
+    <admin-style-view
+      *ngIf="isView; else styleFormTemplate"
+      [style]="styleData"
+    ></admin-style-view>
+  </ng-container>
+</admin-page-content-entity-layout>
+
+<ng-template #styleFormTemplate
+  ><admin-style-form [entity]="styleData"></admin-style-form
+></ng-template>

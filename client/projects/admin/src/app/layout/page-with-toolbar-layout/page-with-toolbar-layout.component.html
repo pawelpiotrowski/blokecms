@@ -1,0 +1,38 @@
+<div class="app-flex-fill">
+  <div
+    class="app-flex-fill app-flex-layout__row app-flex-layout--align-start-stretch"
+  >
+    <div
+      [ngStyle]="{
+        flex: '1 1 ' + toolbarWidth,
+        'min-width': toolbarWidth,
+        'max-width': toolbarWidth,
+        'box-sizing': 'border-box'
+      }"
+    >
+      <ng-content
+        *ngIf="overrideToolbar; else toolbarTemplate"
+        select="[page-with-toolbar-layout--toolbar]"
+      ></ng-content>
+    </div>
+    <div
+      [ngStyle]="{
+        flex: '1 1 auto',
+        'box-sizing': 'border-box',
+        'height.%': 100,
+        'width.%': 100
+      }"
+      class="app-layout-padding"
+    >
+      <ng-content select="[page-with-toolbar-layout--page]"></ng-content>
+    </div>
+  </div>
+</div>
+
+<ng-template #toolbarTemplate>
+  <mat-toolbar
+    class="page-with-toolbar-layout__toolbar app-flex-fill app-flex-layout__column app-flex-layout--align-_-center"
+  >
+    <admin-main-nav></admin-main-nav>
+  </mat-toolbar>
+</ng-template>
