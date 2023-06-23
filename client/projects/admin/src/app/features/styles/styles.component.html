@@ -1,0 +1,18 @@
+<admin-page-with-child-drawer-layout
+  [activateDrawer]="hasChildView"
+  [drawerPercentageWidth]="'100%'"
+  [pageCreateNewButtonLabel]="entityLabel"
+  [pageCreateNewButtonRoute]="'./'"
+  [loading]="loading"
+>
+  <div page-with-child-drawer-layout--page>
+    <admin-page-content-list-layout
+      [rows]="data"
+      [columns]="columns"
+      (editActionEmitter)="editActionEventHandler($event)"
+      (viewActionEmitter)="viewActionEventHandler($event)"
+      (deleteActionEmitter)="deleteActionEventHandler($event)"
+      [actionConfirmUseRowProperty]="'name'"
+    ></admin-page-content-list-layout>
+  </div>
+</admin-page-with-child-drawer-layout>

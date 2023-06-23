@@ -1,0 +1,116 @@
+/*
+ * Global classes prefix with app-
+*/
+.app-layout-padding {
+  padding: var(--layout-gap);
+}
+
+.app-flex-spacer {
+  flex: 1 0 auto;
+}
+
+// fxFlexFill
+.app-flex-fill {
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+}
+
+// fxLayout="column"
+.app-flex-layout__column {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+}
+
+// fxLayout="row"
+.app-flex-layout__row {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+}
+
+// fxLayoutAlign="center center"
+.app-flex-layout--align-center-center {
+  place-content: center;
+  align-items: center;
+}
+
+// fxLayoutAlign="end center"
+.app-flex-layout--align-end-center {
+  place-content: center flex-end;
+  align-items: center;
+}
+
+// fxLayoutAlign="space-around stretch"
+.app-flex-layout--align-space-around-stretch {
+  place-content: stretch space-around;
+  align-items: stretch;
+}
+.app-flex-layout__row.app-flex-layout--align-space-around-stretch {
+  max-height: 100%;
+}
+.app-flex-layout__column.app-flex-layout--align-space-around-stretch {
+  max-width: 100%;
+}
+
+// fxLayoutAlign="start stretch"
+.app-flex-layout--align-start-stretch {
+  place-content: stretch flex-start;
+  align-items: stretch;
+}
+.app-flex-layout__row.app-flex-layout--align-start-stretch {
+  max-height: 100%;
+}
+.app-flex-layout__column.app-flex-layout--align-start-stretch {
+  max-width: 100%;
+}
+
+// fxLayoutAlign=" center"
+.app-flex-layout--align-_-center {
+  place-content: center flex-start;
+  align-items: center;
+}
+
+// fxLayoutAlign="space-between center"
+.app-flex-layout--align-space-between-center {
+  place-content: center space-between;
+  align-items: center;
+}
+
+.app-login-prompt {
+  /*
+ TODO(mdc-migration): The following rule targets internal classes of dialog that may no longer apply for the MDC version.
+*/
+  mat-dialog-container {
+    padding: 0;
+  }
+}
+
+.app-login-backdrop {
+  background-color: var(--color-background-semi-transparent);
+  backdrop-filter: blur(4px);
+}
+
+.app-fill-view {
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+}
+
+.app-page-with-toolbar-height {
+  box-sizing: border-box;
+  height: var(--page-with-toolbar-height);
+}
+
+.app-toolbar-button-with-icon {
+  .mat-icon {
+    transform: scale(0.7);
+  }
+}
+
+button.mat-mdc-button {
+  letter-spacing: normal;
+}

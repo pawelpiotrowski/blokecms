@@ -1,0 +1,20 @@
+<admin-page-with-toolbar-layout>
+  <div page-with-toolbar-layout--page class="app-fill-view">
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+      <a
+        mat-tab-link
+        *ngFor="let link of tabLinks"
+        [routerLink]="link.link"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+        class="settings-link"
+      >
+        {{ link.label }}
+      </a>
+    </nav>
+    <mat-tab-nav-panel #tabPanel class="settings-panel">
+      <router-outlet></router-outlet>
+    </mat-tab-nav-panel>
+  </div>
+</admin-page-with-toolbar-layout>

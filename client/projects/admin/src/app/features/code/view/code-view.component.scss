@@ -1,0 +1,12 @@
+.code-view {
+  box-sizing: border-box;
+  height: 100%;
+  &__header {
+    background-color: var(--color-middle);
+    padding-bottom: var(--layout-gap);
+  }
+  &__card-content {
+    margin-top: var(--layout-gap);
+    height: calc(100% - 116px);
+  }
+}

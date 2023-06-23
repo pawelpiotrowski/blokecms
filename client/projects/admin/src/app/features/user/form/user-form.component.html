@@ -1,0 +1,85 @@
+<mat-card appearance="outlined" *ngIf="user" class="user-form">
+  <form
+    [formGroup]="createUserForm"
+    (keydown.enter)="onCreateUserSubmit($event)"
+  >
+    <mat-card-header class="user-form__header">
+      <div mat-card-avatar class="user-form__avatar">
+        {{ createUserForm.value.username.slice(0, 1) }}
+      </div>
+      <mat-card-title>
+        <mat-form-field appearance="outline" class="user-form__field">
+          <mat-label>Enter username</mat-label>
+          <input
+            type="text"
+            placeholder="New username"
+            matInput
+            formControlName="username"
+            required
+          />
+          <mat-error *ngIf="createUserFormCtrl['username']; errors"
+            >Username is required</mat-error
+          >
+        </mat-form-field>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <mat-checkbox formControlName="isAdmin">Is admin</mat-checkbox>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content class="user-form__content">
+      <div class="user-content-grid">
+        <div class="user-content-grid__item">
+          <mat-form-field appearance="outline" class="user-form__field">
+            <mat-label>{{ isEdit ? 'New' : 'Enter' }} password</mat-label>
+            <input
+              [type]="createUserPwdInputsHide ? 'password' : 'text'"
+              placeholder="Password"
+              matInput
+              formControlName="password"
+              [required]="!isEdit"
+            />
+            <mat-error *ngIf="createUserFormCtrl['password'].errors"
+              >Password is required</mat-error
+            >
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="toggleCreateUserPwdInputsHide()"
+              class="user-form__field__button"
+            >
+              <mat-icon>{{
+                createUserPwdInputsHide ? 'visibility_off' : 'visibility'
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="user-content-grid__item">
+          <mat-form-field appearance="outline" class="user-form__field">
+            <mat-label>Confirm {{ isEdit ? 'new' : '' }} password</mat-label>
+            <input
+              [type]="createUserPwdInputsHide ? 'password' : 'text'"
+              placeholder="Confirm password"
+              matInput
+              formControlName="confirmPassword"
+              [required]="!isEdit"
+            />
+            <mat-error *ngIf="createUserFormCtrl['confirmPassword'].errors"
+              >Error confirming password</mat-error
+            >
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="toggleCreateUserPwdInputsHide()"
+              class="user-form__field__button"
+            >
+              <mat-icon>{{
+                createUserPwdInputsHide ? 'visibility_off' : 'visibility'
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+  </form>
+</mat-card>

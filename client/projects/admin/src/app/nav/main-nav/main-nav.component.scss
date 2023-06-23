@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  &.horizontal {
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+}
+
+.main-nav__divider {
+  margin: var(--layout-gap) 0;
+  opacity: 0.3;
+  width: 100%;
+}
+
+.active {
+  cursor: default;
+  pointer-events: none;
+  button {
+    color: #666;
+  }
+}

@@ -1,0 +1,33 @@
+.dashboard {
+  height: 100%;
+  overflow-y: auto;
+
+  &__title {
+    // TODO grab this color from theme
+    color: #3f51b5;
+    font-weight: normal;
+  }
+
+  &__card {
+    width: 100%;
+    height: 100%;
+
+    &--insights {
+      .dashboard__card__title {
+        margin-bottom: var(--layout-gap);
+      }
+    }
+
+    &__title {
+      color: var(--color-lead-semi-transparent);
+      &__icon {
+        vertical-align: text-bottom;
+        margin-right: 12px;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+    }
+  }
+}

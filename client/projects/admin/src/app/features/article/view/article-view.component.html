@@ -1,0 +1,11 @@
+<mat-card appearance="outlined" *ngIf="article" class="article-view">
+  <article>
+    <h1>
+      {{ article.title }}
+    </h1>
+    <admin-article-content
+      *ngFor="let content of article.content"
+      [content]="content"
+    ></admin-article-content>
+  </article>
+</mat-card>

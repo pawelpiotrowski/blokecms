@@ -1,0 +1,22 @@
+<admin-page-content-entity-layout
+  [parentRouteLabel]="backButtonLabel"
+  [parentRoute]="backButtonRoute"
+  [entityLabel]="'Block'"
+  [entityId]="entityId"
+  [entityActionConfirmLabel]="'Block'"
+  [isNew]="isNew"
+  [isEdit]="isEdit"
+  [isView]="isView"
+>
+  <ng-container *ngIf="blockTextData">
+    <admin-block-view
+      *ngIf="isView; else blockFormTemplate"
+      [showName]="true"
+      [blockText]="blockTextData"
+    ></admin-block-view>
+  </ng-container>
+</admin-page-content-entity-layout>
+
+<ng-template #blockFormTemplate>
+  <admin-block-form [blockText]="blockTextData"></admin-block-form>
+</ng-template>

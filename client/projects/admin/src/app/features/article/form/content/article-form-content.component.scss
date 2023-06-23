@@ -1,0 +1,49 @@
+.article-form-content {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  &__item {
+    padding: 2px;
+    min-height: 24px;
+    &__header {
+      font-size: 14px;
+      position: relative;
+    }
+    &__title {
+      > span {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        &::after {
+          content: '';
+          display: inline-block;
+          margin: 0 2px;
+        }
+      }
+    }
+    .mat-icon {
+      margin-right: var(--layout-gap);
+      opacity: 0.6;
+      transform: scale(0.76);
+    }
+    &__toolbar {
+      .mat-icon {
+        transform: scale(0.76);
+        opacity: 0.86;
+      }
+      &__drag-handle {
+        cursor: grab;
+        .mat-icon,
+        .mat-mdc-button {
+          cursor: grab;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep admin-block-view mat-card.mat-mdc-card,
+::ng-deep admin-media-view mat-card.mat-card {
+  box-shadow: none !important;
+  padding: 0;
+}

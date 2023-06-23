@@ -1,0 +1,29 @@
+.media-view {
+  box-sizing: border-box;
+  height: 100%;
+  &__content,
+  &__content:last-child,
+  &__content:first-child {
+    padding: 0;
+    height: 100%;
+  }
+  &__header {
+    background-color: var(--color-middle);
+    padding-bottom: var(--layout-gap);
+  }
+  &--with-name {
+    .media-view__content {
+      height: calc(100% - 64px);
+    }
+  }
+}
+
+.preview {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}

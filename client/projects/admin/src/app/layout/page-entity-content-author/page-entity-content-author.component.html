@@ -1,0 +1,7 @@
+<a
+  *ngIf="canCreateCreatedByLink; else createdByUsernameTmpl"
+  [routerLink]="['/users', createdByUserId]"
+  ><ng-container *ngTemplateOutlet="createdByUsernameTmpl"></ng-container
+></a>
+
+<ng-template #createdByUsernameTmpl>{{ createdByUsername }}</ng-template>

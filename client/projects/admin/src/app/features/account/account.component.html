@@ -1,0 +1,95 @@
+<admin-page-with-toolbar-layout>
+  <div page-with-toolbar-layout--page class="app-fill-view">
+    <mat-card appearance="outlined" *ngIf="userResolved" class="account">
+      <mat-card-header class="account__header">
+        <div mat-card-avatar class="account__avatar">
+          {{ userName.slice(0, 1) }}
+        </div>
+        <mat-card-title>{{ userName }}</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="account__content">
+        <h3 class="account__content__title">
+          <span>Change password</span>
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="togglePwdInputsHide()"
+            class="account__password-form__field__button"
+          >
+            <mat-icon>{{
+              pwdInputsHide ? 'visibility_off' : 'visibility'
+            }}</mat-icon>
+          </button>
+        </h3>
+        <form [formGroup]="accountPasswordForm" class="account__password-form">
+          <mat-form-field
+            appearance="outline"
+            class="account__password-form__field"
+          >
+            <mat-label>New password</mat-label>
+            <input
+              placeholder="New Password"
+              matInput
+              formControlName="new"
+              [type]="pwdInputsHide ? 'password' : 'text'"
+            />
+            <mat-error *ngIf="accountPasswordFormCtrl['new'].errors"
+              >Required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field
+            appearance="outline"
+            class="account__password-form__field"
+          >
+            <mat-label>Confirm new password</mat-label>
+            <input
+              placeholder="Confirm new Password"
+              matInput
+              formControlName="confirm"
+              [type]="pwdInputsHide ? 'password' : 'text'"
+            />
+            <mat-error *ngIf="accountPasswordFormCtrl['confirm'].errors"
+              >Required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field
+            appearance="outline"
+            class="account__password-form__field"
+          >
+            <mat-label>Current password</mat-label>
+            <input
+              placeholder="Current password"
+              matInput
+              formControlName="current"
+              [type]="pwdInputsHide ? 'password' : 'text'"
+            />
+            <mat-error *ngIf="accountPasswordFormCtrl['current'].errors"
+              >Required</mat-error
+            >
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <span
+          class="account__password-form__actions__label"
+          *ngIf="canSubmit && !submitting"
+        >
+          <mat-icon color="warn">warning</mat-icon> Please note that you will
+          need to login again
+        </span>
+        <span class="account__password-form__actions__label" *ngIf="submitting">
+          <mat-spinner diameter="16"></mat-spinner>
+        </span>
+        <button
+          mat-stroked-button
+          color="primary"
+          [disabled]="!canSubmit || submitting"
+          (click)="submit()"
+        >
+          Submit
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</admin-page-with-toolbar-layout>

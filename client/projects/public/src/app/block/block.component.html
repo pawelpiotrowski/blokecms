@@ -1,0 +1,34 @@
+<ng-container *ngIf="block">
+  <ng-container *ngIf="isMedia">
+    <figure
+      class="nestcms-block nestcms-block--media nestcms-figure nestcms-figure--image"
+    >
+      <img
+        class="nestcms-image"
+        [src]="'/files/' + blockMedia.url"
+        [ngClass]="{
+          'nestcms-image--portrait': blockMedia.isPortrait,
+          'nestcms-image--square': blockMedia.isSquare,
+          'nestcms-image--landscape':
+            !blockMedia.isSquare && !blockMedia.isPortrait
+        }"
+      />
+    </figure>
+  </ng-container>
+  <ng-container *ngIf="isText">
+    <div
+      [innerHTML]="blockTextHtml"
+      class="nestcms-block nestcms-block--text"
+    ></div>
+  </ng-container>
+  <ng-container *ngIf="isCode">
+    <shared-code-edit
+      class="nestcms-block nestcms-block--code"
+      [code]="blockCode.code"
+      [readonly]="true"
+      [language]="blockCode.lang"
+      [showLineNumbers]="blockCode.showLineNumbers"
+    ></shared-code-edit>
+    <div [innerHTML]="blockText.html"></div>
+  </ng-container>
+</ng-container>

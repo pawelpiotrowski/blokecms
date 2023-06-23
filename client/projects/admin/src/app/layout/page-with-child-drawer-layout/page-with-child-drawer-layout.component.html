@@ -1,0 +1,37 @@
+<mat-drawer-container
+  class="app-flex-fill page-with-child-drawer-layout"
+  hasBackdrop="false"
+>
+  <div class="app-flex-fill">
+    <div class="spinner" *ngIf="loading">
+      <mat-spinner diameter="32"></mat-spinner>
+    </div>
+    <mat-toolbar class="app-flex-layout__row app-flex-layout--align-_-center">
+      <button
+        class="app-toolbar-button-with-icon"
+        color="primary"
+        mat-button
+        [routerLink]="[pageCreateNewButtonRoute, 'new']"
+      >
+        <mat-icon>add</mat-icon>
+        Create {{ pageCreateNewButtonLabel }}
+      </button>
+      <ng-content
+        select="[page-with-child-drawer-layout--page-toolbar]"
+      ></ng-content>
+    </mat-toolbar>
+    <ng-content select="[page-with-child-drawer-layout--page]"></ng-content>
+  </div>
+  <mat-drawer
+    #drawer
+    mode="over"
+    position="end"
+    disableClose="true"
+    [opened]="activateDrawer"
+    [ngStyle]="{ width: drawerPercentageWidth }"
+  >
+    <div class="app-flex-fill">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>

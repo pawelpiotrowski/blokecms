@@ -1,0 +1,78 @@
+<div class="app-flex-fill">
+  <div class="spinner" *ngIf="loading">
+    <mat-spinner diameter="32"></mat-spinner>
+  </div>
+  <mat-toolbar class="app-flex-layout__row app-flex-layout--align-_-center">
+    <button
+      *ngIf="getBackButtonRoute | async as buttonInfo"
+      class="app-toolbar-button-with-icon"
+      color="primary"
+      mat-button
+      [routerLink]="buttonInfo.route"
+      [queryParams]="buttonInfo.query"
+      [disabled]="buttonsAvailability.Back === false"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      {{ buttonInfo.label }}
+    </button>
+    <span class="app-flex-spacer"></span>
+    <button
+      *ngIf="!isNew"
+      class="app-toolbar-button-with-icon"
+      color="primary"
+      mat-button
+      [routerLink]="['/' + parentRoute, 'new']"
+      [disabled]="buttonsAvailability.Create === false"
+    >
+      <mat-icon>add</mat-icon>
+      Create {{ entityLabel }}
+    </button>
+    <button
+      *ngIf="!isNew && !isEdit"
+      class="app-toolbar-button-with-icon"
+      color="primary"
+      mat-button
+      [routerLink]="['/' + parentRoute, entityId, 'edit']"
+      [disabled]="buttonsAvailability.Edit === false"
+    >
+      <mat-icon>edit</mat-icon>
+      Edit
+    </button>
+    <button
+      *ngIf="!isNew"
+      class="app-toolbar-button-with-icon"
+      color="primary"
+      mat-button
+      [disabled]="buttonsAvailability.Delete === false"
+      (click)="deleteButtonHandler()"
+    >
+      <mat-icon>delete</mat-icon>
+      Delete
+    </button>
+    <button
+      *ngIf="!isView"
+      class="app-toolbar-button-with-icon"
+      color="primary"
+      mat-button
+      [disabled]="buttonsAvailability.Reset === false"
+      (click)="resetButtonHandler()"
+    >
+      <mat-icon>undo</mat-icon>
+      Reset
+    </button>
+    <button
+      *ngIf="!isView"
+      class="app-toolbar-button-with-icon"
+      color="primary"
+      mat-button
+      [disabled]="buttonsAvailability.Save === false"
+      (click)="saveButtonHandler()"
+    >
+      <mat-icon>save</mat-icon>
+      Save
+    </button>
+  </mat-toolbar>
+  <div class="app-page-with-toolbar-height">
+    <ng-content></ng-content>
+  </div>
+</div>

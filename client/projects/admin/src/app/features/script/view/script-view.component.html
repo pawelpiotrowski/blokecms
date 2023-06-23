@@ -1,0 +1,16 @@
+<mat-card appearance="outlined" *ngIf="script" class="script-view">
+  <mat-card-header>
+    <mat-card-title class="script-view__title">
+      {{ script.name }}
+    </mat-card-title>
+    <mat-card-subtitle>JavaScript:</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="script-view__card-content">
+    <shared-code-edit
+      [language]="'javascript'"
+      [code]="script.formatted"
+      [readonly]="true"
+      [showLineNumbers]="false"
+    ></shared-code-edit>
+  </mat-card-content>
+</mat-card>

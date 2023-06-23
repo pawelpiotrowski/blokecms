@@ -1,0 +1,32 @@
+<mat-card appearance="outlined" *ngIf="user" class="user-view">
+  <mat-card-header class="user-view__header">
+    <div mat-card-avatar class="user-view__avatar">
+      {{ user.username.slice(0, 1) }}
+    </div>
+    <mat-card-title>{{ user.username }}</mat-card-title>
+    <mat-card-subtitle
+      >Role: {{ user.isAdmin ? 'Admin' : 'User' }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="user-view__content">
+    <div class="user-content-grid">
+      <div class="user-content-grid__item">
+        <span class="label">Created</span>
+        <span class="value">{{ user.createdAt | date : dateTimeFormat }}</span>
+      </div>
+      <div class="user-content-grid__item">
+        <span class="label">Updated</span
+        ><span class="value">{{ user.updatedAt | date : dateTimeFormat }}</span>
+      </div>
+      <div class="user-content-grid__item">
+        <span class="label">Created By</span
+        ><span class="value">
+          <admin-page-entity-content-author
+            [createdByUserId]="createdByUserId"
+          ></admin-page-entity-content-author>
+        </span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

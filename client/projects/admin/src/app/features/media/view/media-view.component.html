@@ -1,0 +1,15 @@
+<mat-card
+  appearance="outlined"
+  *ngIf="blockMedia"
+  class="media-view"
+  [ngClass]="{ 'media-view--with-name': showName }"
+>
+  <mat-card-header *ngIf="showName" class="media-view__header">
+    <mat-card-title> Name: {{ blockMedia.name }} </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="media-view__content">
+    <div class="preview">
+      <img [src]="'/files/' + blockMedia.url" />
+    </div>
+  </mat-card-content>
+</mat-card>

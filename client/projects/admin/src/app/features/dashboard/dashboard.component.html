@@ -1,0 +1,80 @@
+<admin-page-with-toolbar-layout>
+  <div page-with-toolbar-layout--page class="dashboard">
+    <ng-container *ngIf="userResolved">
+      <h2 class="dashboard__title" data-testid="dashboard-welcome-title">
+        Hello <strong>{{ userName }}</strong
+        >, what would you like to do?
+      </h2>
+    </ng-container>
+    <mat-grid-list cols="6" rowHeight="33px" gutterSize="16">
+      <mat-grid-tile colspan="6" rowspan="3">
+        <mat-card
+          appearance="outlined"
+          class="dashboard__card dashboard__card--insights"
+        >
+          <mat-card-header>
+            <mat-card-title class="dashboard__card__title"
+              ><mat-icon class="dashboard__card__title__icon">insights</mat-icon
+              >Insights</mat-card-title
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <admin-dashboard-insights
+              *ngIf="publicItems.length"
+              [publicLinks]="publicItems"
+            ></admin-dashboard-insights>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile
+        *ngFor="let item of publicItems"
+        colspan="2"
+        rowspan="3"
+        data-testid="dashboard-grid-tile"
+      >
+        <ng-container
+          *ngTemplateOutlet="itemTmpl; context: { item }"
+        ></ng-container>
+      </mat-grid-tile>
+      <ng-container *ngIf="isAdmin">
+        <mat-grid-tile
+          *ngFor="let item of adminItems"
+          colspan="2"
+          rowspan="3"
+          data-testid="dashboard-grid-tile"
+        >
+          <ng-container
+            *ngTemplateOutlet="itemTmpl; context: { item }"
+          ></ng-container>
+        </mat-grid-tile>
+      </ng-container>
+    </mat-grid-list>
+  </div>
+</admin-page-with-toolbar-layout>
+
+<ng-template #itemTmpl let-item="item">
+  <mat-card appearance="outlined" class="dashboard__card">
+    <mat-card-header>
+      <mat-card-title class="dashboard__card__title"
+        ><mat-icon class="dashboard__card__title__icon">{{
+          item.icon
+        }}</mat-icon>
+        {{ item.label }}</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-actions>
+      <a [routerLink]="['/' + item.newRoute]" class="dashboard__card__link">
+        <button class="app-toolbar-button-with-icon" mat-button>
+          <mat-icon>{{ item.newIcon }}</mat-icon>
+          {{ item.newLabel }}
+        </button>
+      </a>
+      <a [routerLink]="['/' + item.route]" class="dashboard__card__link">
+        <button class="app-toolbar-button-with-icon" mat-button>
+          <mat-icon>{{ item.listIcon }}</mat-icon>
+          {{ item.listLabel }}
+        </button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>

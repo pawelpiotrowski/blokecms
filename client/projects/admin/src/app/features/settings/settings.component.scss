@@ -1,0 +1,10 @@
+.settings-link {
+  letter-spacing: normal;
+}
+
+.settings-panel {
+  display: block;
+  height: calc(100% - 48px);
+  overflow: hidden;
+  outline: 1px solid var(--color-lead-accent);
+}

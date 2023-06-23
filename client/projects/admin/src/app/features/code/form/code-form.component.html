@@ -1,0 +1,48 @@
+<mat-card appearance="outlined" *ngIf="entity" class="code-form">
+  <form [formGroup]="entityForm" (keydown.enter)="entityFormSubmit($event)">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field appearance="outline" class="code-form__field">
+          <mat-label>Enter name</mat-label>
+          <input
+            type="text"
+            placeholder="Code Block name"
+            matInput
+            formControlName="name"
+            required
+          />
+          <mat-error *ngIf="entityFormCtrl['name']; errors"
+            >Name is required</mat-error
+          >
+        </mat-form-field>
+      </mat-card-title>
+      <mat-card-subtitle
+        class="app-flex-layout__row code-form__subtitle app-flex-layout--align-space-around-stretch"
+      >
+        <mat-checkbox
+          formControlName="showLineNumbers"
+          class="code-form__subtitle__cell"
+          >Show Line Numbers</mat-checkbox
+        >
+        <mat-form-field appearance="fill" class="code-form__subtitle__cell">
+          <mat-label>Code Language</mat-label>
+          <mat-select formControlName="lang" name="lang">
+            <mat-option *ngFor="let lang of languages" [value]="lang">
+              {{ lang }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </form>
+  <mat-card-content class="code-form__card-content">
+    <shared-code-edit
+      (codeUpdate)="codeUpdateHandler($event)"
+      [code]="entity.code"
+      [language]="codeFormLang"
+      [showLineNumbers]="codeFormShowLineNumbers"
+      [readonly]="false"
+      class="code-form__code-editor"
+    ></shared-code-edit>
+  </mat-card-content>
+</mat-card>

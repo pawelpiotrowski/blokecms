@@ -1,0 +1,51 @@
+@import '../../../../../node_modules/prismjs/themes/prism.min.css';
+
+shared-code-edit {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  border: 1px solid gray;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.code-edit {
+  $lineNumbersWidth: 35px;
+  &__wrap {
+    min-height: 100%;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  &__line-numbers-column {
+    width: $lineNumbersWidth;
+    background-color: rgba(128, 128, 128, 0.15);
+    color: rgb(85, 85, 85);
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+  &__pre {
+    font-weight: 400;
+    letter-spacing: normal;
+    padding: 10px;
+    tab-size: 4;
+    margin: 0;
+    outline: none;
+    white-space: pre;
+    width: calc(100% - $lineNumbersWidth);
+  }
+}
+
+.code-edit__wrap--no-line-numbers {
+  .code-edit__line-numbers-column {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .code-edit__pre {
+    width: 100%;
+  }
+}

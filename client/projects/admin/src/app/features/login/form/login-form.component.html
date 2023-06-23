@@ -1,0 +1,62 @@
+<mat-card
+  appearance="outlined"
+  class="login-panel"
+  [ngClass]="{ 'login-panel--error-shake': hasError }"
+>
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>Please login</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form
+      [formGroup]="loginForm"
+      (keydown.enter)="onSubmit($event)"
+      class="app-flex-layout__column app-flex-layout--align-space-around-stretch"
+      data-testid="login-form"
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your username</mat-label>
+        <input
+          type="text"
+          placeholder="Your username"
+          matInput
+          formControlName="username"
+          required
+        />
+        <mat-error *ngIf="formCtrl['username'].errors"
+          >Username is required</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input
+          [type]="pwdInputHide ? 'password' : 'text'"
+          placeholder="Your password"
+          matInput
+          formControlName="password"
+          required
+        />
+        <mat-error *ngIf="formCtrl['password'].errors"
+          >Password is required</mat-error
+        >
+        <button mat-icon-button matSuffix (click)="togglePwdInputHide()">
+          <mat-icon>{{
+            pwdInputHide ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions
+    class="app-flex-layout__row app-flex-layout--align-end-center"
+  >
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="onSubmit($event)"
+      [disabled]="!canSubmit"
+    >
+      LOGIN
+    </button>
+  </mat-card-actions>
+</mat-card>

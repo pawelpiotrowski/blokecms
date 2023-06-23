@@ -1,0 +1,39 @@
+<mat-toolbar class="app-flex-layout__row app-flex-layout--align-_-center">
+  <span class="navigation__mat-toolbar__label">Links</span>
+  <span class="app-flex-spacer"></span>
+  <button
+    class="app-toolbar-button-with-icon navigation__toolbar-button"
+    color="primary"
+    mat-button
+    *ngIf="addNew !== null"
+    (click)="cancelAddNew()"
+  >
+    <mat-icon>close</mat-icon>
+    Cancel
+  </button>
+  <button
+    class="app-toolbar-button-with-icon navigation__toolbar-button"
+    color="primary"
+    mat-button
+    [disabled]="addNew !== null"
+    (click)="addNewInternalLink()"
+  >
+    <mat-icon>add</mat-icon>
+    Add internal link
+  </button>
+  <button
+    class="app-toolbar-button-with-icon navigation__toolbar-button"
+    color="primary"
+    mat-button
+    [disabled]="addNew !== null"
+    (click)="addNewExternalLink()"
+  >
+    <mat-icon>add</mat-icon>
+    Add external link
+  </button>
+</mat-toolbar>
+<admin-navigation-form-link
+  *ngIf="addNew !== null"
+  [link]="addNew"
+  (linkUpdate)="linkAddHandler($event)"
+></admin-navigation-form-link>

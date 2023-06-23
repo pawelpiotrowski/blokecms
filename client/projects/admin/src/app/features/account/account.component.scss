@@ -1,0 +1,55 @@
+.account {
+  box-sizing: border-box;
+  height: 100%;
+  --mdc-outlined-card-outline-color: transparent;
+}
+
+.account__header,
+.account__content {
+  padding: var(--layout-gap) 0;
+}
+
+.account__header {
+  align-items: baseline;
+}
+
+.account__content {
+  &__title {
+    span {
+      display: inline-block;
+      vertical-align: super;
+    }
+  }
+}
+
+.account__avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-middle);
+  border-radius: 100%;
+}
+
+.account__password-form {
+  display: flex;
+  flex-direction: row;
+  gap: var(--layout-gap);
+
+  &__actions {
+    &__label {
+      display: flex;
+      margin: 0 var(--layout-gap);
+      .mat-icon {
+        margin-right: calc(var(--layout-gap) / 2);
+        margin-top: -2px;
+      }
+    }
+  }
+  &__field {
+    width: 50%;
+    &__button {
+      opacity: 0.76;
+      transform: scale(0.82);
+    }
+  }
+}

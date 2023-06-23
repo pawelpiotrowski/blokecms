@@ -1,0 +1,27 @@
+.page-view {
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+  &__slug {
+    background-color: var(--mdc-outlined-card-outline-color);
+    padding: 8px;
+  }
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+  }
+  &__section {
+    padding: var(--layout-gap) 0;
+  }
+}
+
+::ng-deep admin-article-view .article-view {
+  height: auto !important;
+  --mdc-outlined-card-outline-color: transparent;
+  admin-media-view,
+  admin-block-view {
+    .mat-mdc-card-outlined {
+      --mdc-outlined-card-outline-color: transparent;
+    }
+  }
+}

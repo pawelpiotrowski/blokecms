@@ -1,0 +1,30 @@
+button {
+  margin: 0 8px;
+  &.active {
+    filter: brightness(120%);
+  }
+}
+
+main {
+  height: 100%;
+  overflow: auto;
+}
+
+.main-layout__toolbar {
+  position: relative;
+}
+
+.main-layout__title {
+  margin: 0;
+}
+
+.logo {
+  align-items: center;
+  background-color: var(--color-lead-accent);
+  display: flex;
+  font-size: 32px;
+  height: 100%;
+  justify-content: center;
+  transform: translateX(calc(#{var(--layout-gap)} * -1));
+  width: var(--vertical-toolbar-width);
+}

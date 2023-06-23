@@ -1,0 +1,16 @@
+<mat-card appearance="outlined" *ngIf="blockCode" class="code-view">
+  <mat-card-header class="code-view__header">
+    <mat-card-title class="code-view__title">
+      Name: {{ blockCode.name }}
+    </mat-card-title>
+    <mat-card-subtitle>Language: {{ blockCode.lang }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="code-view__card-content">
+    <shared-code-edit
+      [code]="blockCode.code"
+      [readonly]="true"
+      [showLineNumbers]="blockCode.showLineNumbers"
+      [language]="blockCode.lang"
+    ></shared-code-edit>
+  </mat-card-content>
+</mat-card>

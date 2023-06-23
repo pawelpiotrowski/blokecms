@@ -1,0 +1,70 @@
+<mat-card appearance="outlined" *ngIf="entity" class="page-form">
+  <form [formGroup]="entityForm" (keydown.enter)="entityFormSubmit($event)">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field
+          appearance="outline"
+          class="page-form__field page-form__field__title"
+        >
+          <mat-label>Enter title</mat-label>
+          <input
+            type="text"
+            placeholder="Page title"
+            matInput
+            formControlName="title"
+            required
+          />
+          <mat-error *ngIf="entityFormCtrl['title']; errors"
+            >Title is required</mat-error
+          >
+        </mat-form-field>
+      </mat-card-title>
+      <mat-form-field appearance="fill" class="page-form__field__slug">
+        <mat-label>Enter slug</mat-label>
+        <input
+          type="text"
+          placeholder="Page slug"
+          matInput
+          formControlName="slug"
+          required
+        />
+        <mat-error *ngIf="entityFormCtrl['slug']; errors"
+          >Slug is required</mat-error
+        >
+      </mat-form-field>
+    </mat-card-header>
+  </form>
+  <mat-card-content
+    *ngIf="isEdit; else newPageArticlesTemplate"
+    class="page-form__card-content"
+  >
+    <admin-page-form-toolbar
+      [pageId]="entity._id"
+      [articles]="pageArticles"
+      (searchResult)="onSearchResult($event)"
+      [(expanded)]="expandContent"
+    >
+    </admin-page-form-toolbar>
+    <admin-page-form-content
+      *ngIf="entity.articles?.length; else emptyPageArticlesTemplate"
+      [content]="pageArticles"
+      [expanded]="expandContent"
+      [pageId]="entity._id"
+      (contentUpdate)="onArticlesUpdate($event)"
+      class="page-form__content"
+    >
+    </admin-page-form-content>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #newPageArticlesTemplate>
+  <mat-card-content class="page-form__card-content">
+    You need to save new page to add articles.
+  </mat-card-content>
+</ng-template>
+
+<ng-template #emptyPageArticlesTemplate>
+  <mat-card-content class="page-form__card-content">
+    No articles
+  </mat-card-content>
+</ng-template>

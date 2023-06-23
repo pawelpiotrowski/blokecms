@@ -1,0 +1,16 @@
+.block-form {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.block-form__title.mat-mdc-card-title {
+  font-size: 16px;
+}
+
+.block-form__field {
+  width: 100%;
+}
+
+::ng-deep .mat-mdc-card-header-text {
+  flex: 1;
+}

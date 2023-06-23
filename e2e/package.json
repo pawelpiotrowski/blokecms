@@ -1,0 +1,16 @@
+{
+  "name": "e2e",
+  "version": "0.7.0",
+  "scripts": {
+    "test": "npm run test:auth && npx playwright test --grep-invert @setup",
+    "test:auth": "npx playwright test --project=setup",
+    "test:local": "E2E_RUN_LOCAL=1 npm run test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.32.1",
+    "@types/node": "^18.15.11"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}

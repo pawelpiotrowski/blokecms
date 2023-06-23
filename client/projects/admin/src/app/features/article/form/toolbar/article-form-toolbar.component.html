@@ -1,0 +1,42 @@
+<mat-toolbar class="app-flex-layout__row app-flex-layout--align-_-center">
+  <span class="article__mat-toolbar__label">Content</span>
+  <span class="app-flex-spacer"></span>
+  <button
+    class="app-toolbar-button-with-icon"
+    color="primary"
+    mat-button
+    (click)="toggleExpanded()"
+  >
+    <mat-icon>{{ expanded ? 'unfold_less' : 'unfold_more' }}</mat-icon>
+    {{ expanded ? 'Collapse' : 'Expand' }} all
+  </button>
+  <button
+    class="app-toolbar-button-with-icon"
+    color="primary"
+    mat-button
+    [routerLink]="['/blocks', 'new']"
+    [queryParams]="getButtonLinkParams()"
+  >
+    <mat-icon>add</mat-icon>
+    Add new block
+  </button>
+  <button
+    class="app-toolbar-button-with-icon"
+    color="primary"
+    mat-button
+    [routerLink]="['/multimedia', 'new']"
+    [queryParams]="getButtonLinkParams()"
+  >
+    <mat-icon>add</mat-icon>
+    Add new media
+  </button>
+  <button
+    class="app-toolbar-button-with-icon"
+    color="primary"
+    mat-button
+    (click)="openSearch()"
+  >
+    <mat-icon>search</mat-icon>
+    Search
+  </button>
+</mat-toolbar>

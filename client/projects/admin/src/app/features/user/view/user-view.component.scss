@@ -1,0 +1,42 @@
+.user-view {
+  box-sizing: border-box;
+  height: 100%;
+  --mdc-outlined-card-outline-color: transparent;
+}
+
+.user-view__header,
+.user-view__content {
+  padding: var(--layout-gap) 0;
+}
+
+.label,
+.value {
+  display: block;
+}
+
+.label {
+  color: var(--color-lead-semi-transparent);
+  font-size: 96%;
+  padding-bottom: calc(var(--layout-gap) / 2);
+}
+
+.user-view__avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-middle);
+  border-radius: 100%;
+}
+
+.user-content-grid {
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  display: flex;
+  margin: 0px -16px -32px 0px;
+  &__item {
+    padding: 0px 16px 32px 0px;
+    flex: 1 1 50%;
+    box-sizing: border-box;
+    max-width: 50%;
+  }
+}

@@ -1,0 +1,24 @@
+<mat-card appearance="outlined" *ngIf="navigation" class="navigation-view">
+  <mat-card-header>
+    <mat-card-title class="navigation-view__title">
+      {{ navigation.name }}
+    </mat-card-title>
+    <mat-card-subtitle>Links:</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="navigation-view__card-content">
+    <ng-container *ngIf="navigation.links?.length; else noLinks">
+      <ul>
+        <ng-container *ngFor="let link of navigation.links">
+          <li>
+            <span class="navigation-view__link__type">{{
+              link.url ? 'External' : 'Internal'
+            }}</span
+            >: <span>{{ link.url ? link.url : '/' + link.slug }}</span>
+          </li>
+        </ng-container>
+      </ul>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #noLinks> No links yet </ng-template>

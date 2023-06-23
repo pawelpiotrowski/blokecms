@@ -1,0 +1,58 @@
+<mat-accordion
+  class="page-form-content"
+  displayMode="flat"
+  hideToggle
+  multi
+  cdkDropList
+  (cdkDropListDropped)="dropSortBlocks($event)"
+  *ngIf="content?.length"
+>
+  <mat-expansion-panel
+    *ngFor="let item of content"
+    class="page-form-content__item"
+    cdkDragLockAxis="y"
+    cdkDrag
+  >
+    <mat-expansion-panel-header class="page-form-content__item__header">
+      <mat-panel-title class="page-form-content__item__title">
+        <span>
+          {{ item.title }}
+        </span>
+      </mat-panel-title>
+
+      <div
+        (click)="dragHandleClickHandler($event)"
+        class="page-form-content__item__toolbar app-flex-layout__row app-flex-layout--align-_-center"
+      >
+        <button
+          mat-icon-button
+          color="primary"
+          title="Edit"
+          [routerLink]="['/articles', item._id, 'edit']"
+          [queryParams]="{ parent: 'pages', id: pageId }"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          title="Remove"
+          (click)="removeItem(item)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <div
+          cdkDragHandle
+          class="page-form-content__item__toolbar__drag-handle"
+        >
+          <button mat-icon-button title="Move">
+            <mat-icon>drag_indicator</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <admin-article-view [article]="item"></admin-article-view>
+    </ng-template>
+  </mat-expansion-panel>
+</mat-accordion>

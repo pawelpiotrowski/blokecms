@@ -1,0 +1,22 @@
+<admin-page-content-entity-layout
+  [parentRouteLabel]="backButtonLabel"
+  [parentRoute]="backButtonRoute"
+  [entityLabel]="'Multimedia'"
+  [entityId]="entityId"
+  [entityActionConfirmLabel]="'Media'"
+  [isNew]="isNew"
+  [isEdit]="isEdit"
+  [isView]="isView"
+>
+  <ng-container *ngIf="blockMediaData">
+    <admin-media-view
+      *ngIf="isView; else mediaFormTemplate"
+      [blockMedia]="blockMediaData"
+      [showName]="true"
+    ></admin-media-view>
+  </ng-container>
+</admin-page-content-entity-layout>
+
+<ng-template #mediaFormTemplate>
+  <admin-media-form [blockMedia]="blockMediaData"></admin-media-form>
+</ng-template>

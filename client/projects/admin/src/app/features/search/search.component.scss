@@ -1,0 +1,57 @@
+$searchResultHeight: 65vh;
+$searchResultColumnGap: 48px;
+
+:host {
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.mat-mdc-dialog-content {
+  min-height: $searchResultHeight;
+  overflow: hidden;
+  min-height: auto;
+  overflow: hidden;
+  max-height: none;
+  height: calc(100% - 190px);
+}
+
+.search-result {
+  height: 100%;
+  &__results {
+    height: 100%;
+  }
+  &__column,
+  &__column-divider {
+    height: 100%;
+  }
+  &__column {
+    width: calc(50% - calc($searchResultColumnGap / 2));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  &__output {
+    &__results {
+      height: 100%;
+      overflow-y: auto;
+    }
+  }
+  &__column-divider {
+    width: $searchResultColumnGap;
+  }
+  &__row {
+    cursor: pointer;
+    &:hover {
+      background-color: var(--color-lead-accent);
+    }
+    &--disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+    button .mat-icon {
+      transform: scale(0.7);
+    }
+  }
+}

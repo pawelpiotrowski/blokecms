@@ -1,0 +1,8 @@
+<mat-card appearance="outlined" *ngIf="blockText">
+  <mat-card-header *ngIf="showName" class="block-text__header">
+    <mat-card-title> Name: {{ blockText.name }} </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="preview" [innerHTML]="blockText.html"></div>
+  </mat-card-content>
+</mat-card>
