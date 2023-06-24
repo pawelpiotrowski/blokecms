@@ -1,10 +1,10 @@
 const { spawnSync } = require('child_process');
-console.log('### Starting nest cms update...\n');
+console.log('### Starting Bloke CMS update...\n');
 const args = process.argv.slice(2);
 
 try {
-  console.log('### Stopping nest cms...');
-  spawnSync('pm2', ['stop', 'nestCmsStage']);
+  console.log('### Stopping Bloke CMS...');
+  spawnSync('pm2', ['stop', 'blokeCmsStage']);
   console.log('### Done!');
 
   console.log('### Git pull latest develop');
@@ -25,14 +25,14 @@ try {
     console.log('### Done!');
   }
 
-  console.log('### Starting nest cms...');
-  spawnSync('pm2', ['start', 'nestCmsStage']);
+  console.log('### Starting Bloke CMS...');
+  spawnSync('pm2', ['start', 'blokeCmsStage']);
   console.log('### Done!');
 
   console.log('\n### Update completed!');
 
   process.exit(0);
 } catch (error) {
-  console.error('\n### Error updating nest cms');
+  console.error('\n### Error updating Bloke CMS');
   process.exit(1);
 }
