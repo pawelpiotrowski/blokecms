@@ -5,10 +5,10 @@ const clientAdminDir = path.join(__dirname, '../server/ui-admin');
 const scriptsAdminDir = path.join(__dirname, '../server/ui-admin');
 
 fs.mkdirSync(clientPublicDir, { recursive: true });
-fs.writeFileSync(clientPublicDir + '/nestcms.txt', 'NestCMS public files');
+fs.writeFileSync(clientPublicDir + '/blokecms.txt', 'Bloke CMS public files');
 fs.mkdirSync(clientAdminDir, { recursive: true });
-fs.writeFileSync(clientAdminDir + '/nestcms.txt', 'NestCMS admin files');
+fs.writeFileSync(clientAdminDir + '/blokecms.txt', 'Bloke CMS admin files');
 
-console.log('UI directories sreated successfully');
+console.log('UI directories created successfully');
 
 require('child_process').fork(path.join(__dirname, 'build-server-dotenv.js'));

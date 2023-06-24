@@ -103,9 +103,9 @@ Using [bitnami MEAN stack](https://docs.bitnami.com/azure/infrastructure/mean/ge
 
 Use min 1GB RAM. Make sure you download instance ssh key.
 
-### Install nvm and correct node version
+### Ensure correct node version
 
-Check [.nvmrc](.nvmrc) file for node version and install it on deployment server using [nvm](https://github.com/nvm-sh/nvm).
+Check [.nvmrc](.nvmrc) file for node version and if needed install it on deployment server using [nvm](https://github.com/nvm-sh/nvm).
 
 ### Setup git
 
@@ -140,8 +140,10 @@ Create '.env' file in [server directory](./server/) - _hint_ you can use script 
 Setup user and db for cms:
 
 Login to mongo:
-`mongo admin --username root -p`
-Password will be your 'bitnami' user password (find in 'bitnami_credentials') check it with:
+`mongo admin --username root -p password`
+or
+`mongosh admin --username root -p password`
+Password will be your 'bitnami' user password (find in 'bitnami_credentials'):
 `cat ~/bitnami_credentials`
 
 Create db:
@@ -154,21 +156,26 @@ Exit:
 `exit;`
 
 Add DB_URL to .env file:
-`DB_URL="mongodb://<USER_NAME>:<USER_PWD>@localhost/<DB_NAME>`
+`DB_URL="mongodb://<USER_NAME>:<USER_PWD>@localhost/<DB_NAME>"`
 
-### Setup Apache
+### Build the app providing absolute url for client graphql setup
+
+`npm --absurl=<YOUR_CMS_URL> run build`
+
+### Setup and Restart Apache
 
 Set apache vhost.
 Copy the file to remove the .disabled suffix:
 `sudo cp /opt/bitnami/apache/conf/vhosts/sample-vhost.conf.disabled /opt/bitnami/apache/conf/vhosts/sample-vhost.conf`
 `sudo cp /opt/bitnami/apache/conf/vhosts/sample-https-vhost.conf.disabled /opt/bitnami/apache/conf/vhosts/sample-https-vhost.conf`
-You may need to edit path in both files to match nestcms location:
+You will need to edit path in both files to match nestcms location:
 `DocumentRoot` and `<Directory...`
+**Note: you must point to server dist directory**
 
 Restart Apache for the changes to be taken into effect:
 `sudo /opt/bitnami/ctlscript.sh restart apache`
 
-### Start the app providing user seed (optional)
+### Start the app providing (optional) user seed
 
 `ADMIN_SEED=<YOUR_ADMIN_SEED_USERNAME> npm run start`
 
@@ -183,5 +190,5 @@ Start the app providing a name and start script:
 `pm2 start npm --name "blokeCmsStage" -- run "start"`
 Since this may take a while you can check logs when build is finished and app is running:
 `pm2 logs`
-After first start you can start using update script
+You can now start using update script
 `node /opt/bitnami/projects/blokecms/scripts/update.js`
