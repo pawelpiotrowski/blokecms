@@ -24,19 +24,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
-      # - run: npm run ci
-      # - run: npm run test
-      #   env:
-      #     JWT_KEY: testKEY
-      # - name: Copy artefacts to server
-      #  uses: appleboy/scp-action@master
-      #  with:
-      #    host: ${{ secrets.AWS_HOSTNAME }}
-      #    username: ${{ secrets.AWS_USERNAME }}
-      #    key: ${{ secrets.AWS_PRIVATE_KEY }}
-      #    port: 22
-      #    source: 'server/dist/*,server/ui-admin/*,server/ui-public/*'
-      #    target: 'test'
       - name: Trigger server update
         run: |
           echo "$AWS_PRIVATE_KEY" > private_key && chmod 600 private_key

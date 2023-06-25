@@ -1,6 +1,9 @@
 .media-view {
   box-sizing: border-box;
   height: 100%;
+  &--integrated {
+    height: auto;
+  }
   &__content,
   &__content:last-child,
   &__content:first-child {
