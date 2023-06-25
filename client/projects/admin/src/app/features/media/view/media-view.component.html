@@ -2,7 +2,10 @@
   appearance="outlined"
   *ngIf="blockMedia"
   class="media-view"
-  [ngClass]="{ 'media-view--with-name': showName }"
+  [ngClass]="{
+    'media-view--with-name': showName,
+    'media-view--integrated': !standalone
+  }"
 >
   <mat-card-header *ngIf="showName" class="media-view__header">
     <mat-card-title> Name: {{ blockMedia.name }} </mat-card-title>

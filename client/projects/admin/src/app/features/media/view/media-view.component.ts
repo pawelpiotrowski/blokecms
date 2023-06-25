@@ -9,4 +9,5 @@ import { BlockMedia } from 'shared-lib';
 export class MediaViewComponent {
   @Input() blockMedia!: BlockMedia;
   @Input() showName = false;
+  @Input() standalone = true;
 }
