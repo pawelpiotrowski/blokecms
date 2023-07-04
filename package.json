@@ -1,6 +1,6 @@
 {
   "name": "blokecms",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple CMS built with nestjs and angular",
   "files": [
     "/config.client.json",

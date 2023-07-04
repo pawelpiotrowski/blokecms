@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const clientPublicDir = path.join(__dirname, '../server/ui-public');
 const clientAdminDir = path.join(__dirname, '../server/ui-admin');
-const scriptsAdminDir = path.join(__dirname, '../server/ui-admin');
 
 fs.mkdirSync(clientPublicDir, { recursive: true });
 fs.writeFileSync(clientPublicDir + '/blokecms.txt', 'Bloke CMS public files');

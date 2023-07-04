@@ -1,6 +1,6 @@
 {
   "name": "e2e",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "test": "npm run test:auth && npx playwright test --grep-invert @setup",
     "test:auth": "npx playwright test --project=setup",
